@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>javascript modal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="css/common.css" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!--    <script src="js/jquery.easypiechart.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
+</head>
+
+<body>
+    <div id="body">
+        <header>
+            <div class="return"><button onclick="history.back()"><img src="imgs/ico_left.svg" alt="뒤로가기"></button></div>
+            <div class="header_title"><span>상담 질문</span></div>
+        </header>
+        <section>
+            <div class="wrap">
+                <div class="title">
+                    <h1>궁금한 내용을 선택해주세요</h1>
+                </div>
+                <div class="main">
+                    <ul class="faqul">
+                        <li>
+                            <input type="checkbox" id="name1">
+                            <label for="name1">보장 내역 설명과 맞춤형 보험 컨설팅</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="name2">
+                            <label for="name2">보험료 다이어트</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="name3">
+                            <label for="name3">보험료 유지하며 보장 늘리기</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="name4">
+                            <label for="name4">운전자보험, 치아보험 상담</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="name5">
+                            <label for="name5">내 또래들에게 필요한 상품 알아보기</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="name6">
+                            <label for="name6">보험금 청구 관련 모든 것 알아보기</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="name7">
+                            <label for="name7">기타 (직접 입력)</label>
+                            <textarea id="name" maxlength="200"></textarea>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div class="btn_footer">
+            <div class="faq_footer">
+                <button class="close btn">선택</button>
+            </div>
+        </div>
+    </div>
+<script>
+    $('input:checkbox').click(function(){
+        let checked = $(this).is(':checked');
+        if(checked){
+            $('.btn').addClass('chk');
+        } else {
+            $('.btn').removeClass('chk');
+        }
+    });
+</script>
+</body>
+</html>

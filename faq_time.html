@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>javascript modal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="css/common.css" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!--    <script src="js/jquery.easypiechart.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
+</head>
+
+<body>
+    <div id="body">
+        <header>
+            <div class="return"><button onclick="history.back()"><img src="imgs/ico_left.svg" alt="뒤로가기"></button></div>
+            <div class="header_title"><span>상담 시간 선택</span></div>
+        </header>
+        <section>
+            <div class="wrap">
+                <div class="title">
+                    <h1>상담 시간을 선택하시면 해당 시간에 연락을 드릴게요</h1>
+                </div>
+                <div class="main">
+                    <ul>
+                        <li>
+                            <label class="black">
+                                <input type="radio" value="kakao" name="faq">
+                               지금 바로 상담하기(카카오톡)
+                            </label>
+                        </li>
+                        <li>
+                            <label class="black">
+                                <input type="radio" value="call" class="call" name="faq">
+                                <span>상담 예약하기(전화)</span>
+                            </label>
+                            <p class="sub">상담받고 싶은 시간을 선택하세요</p>
+                        </li>
+                        <li class="mt16">
+                            <p>오전</p>
+                            <div class="flex">
+<!--                                <label>-->
+<!--                                    <input type="radio">-->
+<!--                                    <span>9-10시</span>-->
+<!--                                </label>-->
+<!--                                <label>-->
+<!--                                    <input type="radio">-->
+<!--                                    <span>10-12시</span>-->
+<!--                                </label>-->
+                                <div class="flex_box">9-10시</div>
+                                <div class="flex_box">10-12시</div>
+                            </div>
+                        </li>
+                        <li class="mt16">
+                            <p>오후</p>
+                            <div class="flex">
+                                <div class="flex_box">12-13시</div>
+                                <div class="flex_box">13-15시</div>
+                            </div>
+                            <div class="flex mt8">
+                                <div class="flex_box">15-18시</div>
+                                <div class="flex_box">18-19시</div>
+                            </div>
+                            <div class="flex mt8">
+                                <div class="flex_box wd100">
+                                    언제든지
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div class="btn_footer">
+            <div class="faq_footer">
+                <button class="close btn">선택</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('input:radio').click(function(){
+            let checked = $(this).is(':checked');
+            if(checked){
+                $('.btn').addClass('chk');
+            } else {
+                $('.btn').removeClass('chk');
+            }
+        });
+        $('input:radio.call').click(function() {
+           let call = $(this).is(':checked');
+           if (call) {
+               $('.sub').show();
+           } else {
+               $('.sub').hide();
+           }
+        });
+    </script>
+    <script>
+        $('.flex_box').click(function() {
+           $(this).toggleClass('chk')
+        });
+    </script>
+</body>
+</html>

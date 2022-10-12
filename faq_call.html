@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>javascript modal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="css/common.css" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!--    <script src="js/jquery.easypiechart.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
+</head>
+
+<body>
+    <div id="body">
+        <header>
+            <div class="return"><button onclick="history.back()"><img src="imgs/ico_left.svg" alt="뒤로가기"></button></div>
+            <div class="header_title"><span>연락처 확인</span></div>
+        </header>
+        <section>
+            <div class="wrap">
+                <div class="title">
+                    <h1>상담받을 연락처를 <br/> 확인해 주세요</h1>
+                </div>
+                <div class="main mt56">
+                    <div class="phone_box">
+                        <div>
+                            <label><input type="number" max="3" maxlength="3" oninput="maxLengthCheck(this)"></label> <!--오류일때 class명 red 추가-->
+                        </div>
+                        <div class="hyphen"></div>
+                        <div>
+                            <label><input type="number" max="4" maxlength="4" oninput="maxLengthCheck(this)" ></label>
+                        </div>
+                        <div class="hyphen"></div>
+                        <div>
+                            <label><input type="number" max="4" maxlength="4" oninput="maxLengthCheck(this)" ></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="underline mt8"></div>
+                <p class="red mt8">번호 오류,정확한 연락처를 입력해 주세요</p>
+            </div>
+        </section>
+        <div class="btn_footer">
+            <div class="faq_footer">
+                <button class="close btn chk">맞습니다</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 동의 -->
+    <div id="overlay3">
+        <div class="modal">
+            <div class="modal_header">
+                <h3>보험상담 서비스를 위한 동의</h3>
+                <span class="close"><img src="imgs/ico_close.svg" alt=""></span>
+            </div>
+            <div class="modal_content">
+                <span>원활한 상담 서비스를 위해 가입하신 보험을 조회하고 상담내역을 보관합니다.</span>
+            </div>
+            <div class="sub_content">
+                <input id="chk" type="checkbox" checked>
+                <label for="chk"></label>
+                <span class="agree">[필수] 개인(신용)정보 수집이용 동의</span>
+                <img src="imgs/ico_agree_right.svg" alt="">
+            </div>
+            <div class="modal_footer">
+                <button class="close btn">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 동의약관 -->
+    <div id="overlay4">
+        <div class="modal">
+            <div class="modal_header">
+                <h3>개인(신용)정보 수집ㆍ이용 동의</h3>
+                <span class="close"><img src="imgs/ico_close.svg" alt=""></span>
+            </div>
+            <div class="modal_content">
+                <span>
+                    주식회사 마이크로프로텍트인슈코어의 보험 상담
+                    서비스 제공을 위해 관련 법령에 따라 개인(신용)정보
+                    수집 및 이용 동이를 받고 있어요.
+                </span>
+                <span class="mt20">
+                    원하지 않을 경우 동의하지 않을 수 있으며, 이경우
+                    보험 상담 신천응 불가능해요.
+                </span>
+            </div>
+            <div class="sub_content">
+                <img src="imgs/img_modal_chart.svg" alt="">
+            </div>
+            <div class="modal_footer">
+                <button class="close btn">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 동의 모달창 열기 이벤트
+        $(".faq_footer").on("click", function () {
+            $("#overlay3").css({
+                display: "block",
+                opacity: 1
+            });
+        });
+        // 모달창 닫기 이벤트
+        $(".close").on("click", function () {
+            $("#overlay3").css({
+                display: "none",
+                opacity: 0
+            });
+        });
+        $(document).on("click", function (e) {
+            if ($("#overlay3").is(e.target)) {
+                $("#overlay3").css({
+                    display: "none",
+                    opacity: 0
+                });
+            }
+        });
+
+        // 약관 모달창 열기 이벤트
+        $(".agree").on("click", function () {
+            $("#overlay4").css({
+                display: "block",
+                opacity: 1
+            });
+        });
+        // 모달창 닫기 이벤트
+        $(".close").on("click", function () {
+            $("#overlay4").css({
+                display: "none",
+                opacity: 0
+            });
+        });
+        $(document).on("click", function (e) {
+            if ($("#overlay4").is(e.target)) {
+                $("#overlay4").css({
+                    display: "none",
+                    opacity: 0
+                });
+            }
+        });
+    </script>
+
+    <script>
+        $('input:radio').click(function(){
+            let checked = $(this).is(':checked');
+            if(checked){
+                $('.btn').addClass('chk');
+            } else {
+                $('.btn').removeClass('chk');
+            }
+        });
+        $('input:checkbox').click(function(){
+            let checked = $(this).is(':checked');
+            if(checked){
+                $('.close').removeClass('chk');
+            } else {
+                $('.close').addClass('chk');
+            }
+        });
+    </script>
+
+    <script>
+        function maxLengthCheck(object){
+            if (object.value.length > object.maxLength){
+                object.value = object.value.slice(0, object.maxLength);
+            }
+        }
+    </script>
+</body>
+</html>
